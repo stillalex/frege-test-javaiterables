@@ -1,0 +1,9 @@
+module org.example.Components where
+
+data Property = native org.example.Property where
+    native getName :: Mutable s Property -> ST s String
+    native getValue :: Mutable s Property -> ST s String
+
+data Tree = native org.example.Tree where
+    native getChildren :: Mutable s Tree -> ST s (Iterable (Mutable s Tree))
+    native getProperties :: Mutable s Tree -> ST s (Iterable (Mutable s (b extends Property)))

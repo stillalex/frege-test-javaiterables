@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.pfalabs</groupId>
+    <artifactId>com.pfalabs.frege-test-javaiterables</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <frege.version>3.25.57</frege.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.frege-lang</groupId>
+            <artifactId>frege</artifactId>
+            <version>${frege.version}</version>
+            <!-- version>3.25.57</version-->
+            <!-- version>3.25.42</version -->
+            <!-- version>3.24.100.1</version -->
+            <classifier>jdk8</classifier>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- sourceDirectory>src/main/frege</sourceDirectory -->
+
+        <plugins>
+            <plugin>
+                <groupId>com.theoryinpractise.frege</groupId>
+                <artifactId>frege-maven-plugin</artifactId>
+                <version>1.0.8</version>
+                <executions>
+                    <execution>
+                        <id>frege-compile</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>frege-test-compile</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <inline>true</inline>
+                    <hints>true</hints>
+                    <includeStale>false</includeStale>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
